@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { Router } from '@reach/router'
+import React, { useState } from 'react';
+import ListPlayer from './components/ListPlayer';
+import AddPlayer from './components/AddPlayer';
+
+
 
 function App() {
+
+  const [listPageIsActive, setListPageIsActive] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Team Manager App</h1>
+      <Router>
+        <ListPlayer
+          path="/players/list"
+          default
+          listPageIsActive={listPageIsActive}
+          setListPageIsActive={setListPageIsActive} />
+        <AddPlayer
+          path="/players/addplayer"
+          listPageIsActive={listPageIsActive}
+          setListPageIsActive={setListPageIsActive} />
+      </Router>
     </div>
   );
 }
