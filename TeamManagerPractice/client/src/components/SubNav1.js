@@ -20,13 +20,13 @@ const SubNav1 = (props) => {
             setAddPlayerTabStyle(styleObjBold)
         }
 
-    },[])
+    },[listPageIsActive])
 
 
     return (
         <div>
             <span style={{ ...listTabStyle }} className="sub-nav-text">
-                <Link to="/players/list">List |</Link>
+                <Link to="/players/list">List|</Link>
             </span>
             <span style={{ ...addPlayerTabStyle }} className="sub-nav-text">
                 <Link to="/players/addplayer">Add Player</Link>

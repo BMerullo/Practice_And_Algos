@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import SubNav1 from './SubNav1';
+import { navigate } from '@reach/router';
 
 
 
@@ -9,7 +10,7 @@ const AddPlayer = (props) => {
     const [position, setPosition] = useState("")
     const { listPageIsActive, setListPageIsActive } = props
     useEffect(() => {
-        setListPageIsActive(true)
+        setListPageIsActive(false)
     });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +24,7 @@ const AddPlayer = (props) => {
                 console.log(res.data)
                 setName("");
                 setPosition("");
+                navigate("/player/list")
             })
             .catch((err) => {
                 console.log("ERROR", err)})
