@@ -22,9 +22,18 @@ const PlayerStatus = (props) => {
     }, [getRequest]);
 
     const handleChangeGameStatus = (playerId, newStatus) => {
+        let putData = {}
+        if (gameId === "1") {
+            putData.gameOneStatus = newStatus
+        } else if (gameId === "2") {
+            putData.gameTwoStatus = newStatus
+        } else {
+            putData.gameThreeStatus = newStatus
+        }
+        
+        
         axios
-            .put(`http://localhost:8000/api/player/${playerId}`,
-                { gameOneStatus: newStatus, })
+            .put(`http://localhost:8000/api/player/${playerId}`, putData)
             .then((res) => {
                 console.log(res)
                 setGetRequest(!getRequest)
@@ -52,8 +61,8 @@ const PlayerStatus = (props) => {
                                     <td>
                                         <button
                                             className={`${player.gameOneStatus === "Playing"
-                                                    ? "green-btn"
-                                                    : ""
+                                                ? "green-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Playing")
@@ -63,8 +72,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameOneStatus === "Not Playing"
-                                                    ? "red-btn"
-                                                    : ""
+                                                ? "red-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Not Playing")
@@ -74,8 +83,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameOneStatus === "Undecided"
-                                                    ? "yellow-btn"
-                                                    : ""
+                                                ? "yellow-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Undecided")
@@ -99,8 +108,8 @@ const PlayerStatus = (props) => {
                                     <td>
                                         <button
                                             className={`${player.gameTwoStatus === "Playing"
-                                                    ? "green-btn"
-                                                    : ""
+                                                ? "green-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Playing")
@@ -110,8 +119,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameTwoStatus === "Not Playing"
-                                                    ? "red-btn"
-                                                    : ""
+                                                ? "red-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Not Playing")
@@ -121,8 +130,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameTwoStatus === "Undecided"
-                                                    ? "yellow-btn"
-                                                    : ""
+                                                ? "yellow-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Undecided")
@@ -146,8 +155,8 @@ const PlayerStatus = (props) => {
                                     <td>
                                         <button
                                             className={`${player.gameThreeStatus === "Playing"
-                                                    ? "green-btn"
-                                                    : ""
+                                                ? "green-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Playing")
@@ -157,8 +166,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameThreeStatus === "Not Playing"
-                                                    ? "red-btn"
-                                                    : ""
+                                                ? "red-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Not Playing")
@@ -168,8 +177,8 @@ const PlayerStatus = (props) => {
                                         </button>
                                         <button
                                             className={`${player.gameThreeStatus === "Undecided"
-                                                    ? "yellow-btn"
-                                                    : ""
+                                                ? "yellow-btn"
+                                                : ""
                                                 }`}
                                             onClick={() =>
                                                 handleChangeGameStatus(player._id, "Undecided")
