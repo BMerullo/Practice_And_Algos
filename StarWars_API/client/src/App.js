@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
+import logo from './images/STARWARS_LOGO.jpeg'
+import { Routes, Route, Link } from "react-router-dom";
+import Categories from './components/Categories';
+import React, {useState} from 'react'
 function App() {
+
+  const [starWarsList, setStarWarsList] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={logo} alt="LOGO" />
+      <Routes>
+        <Route path="/" element={<Categories starWarsList={starWarsList} setStarWarsList={setStarWarsList}/>}/>
+      </Routes>
     </div>
   );
 }
