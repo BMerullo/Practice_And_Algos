@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 
 
 
@@ -11,9 +11,7 @@ const NavBar = (props) => {
         <div>
             <ul className="nav nav-tabs">
                 <li className="nav-item ">
-                    <Link to="/characters" className="link">
-                    <a className="nav-link">Characters</a>
-                    </Link>
+                    <Link to="/characters/1/" className="link, nav-link">Characters</Link>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link">Movies</a>

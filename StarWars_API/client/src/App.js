@@ -1,6 +1,6 @@
 import './App.css';
 import logo from './images/STARWARS_LOGO.jpeg'
-import { Routes, Route, Link } from "react-router-dom";
+import { Router } from '@reach/router'
 import React, {useState} from 'react'
 import NavBar from './components/NavBar';
 import CharacterDisplay from './view/CharacterDisplay';
@@ -13,9 +13,9 @@ function App() {
       <img src={logo} alt="LOGO" className="logo"/>
       <div className="main-page-cont">
       <NavBar/>
-      <Routes>
-        <Route path="/characters" element={<CharacterDisplay />}/>
-      </Routes>
+      <Router>
+        <CharacterDisplay path="/characters/:id"/>
+      </Router>
       </div>
     </div>
   );
