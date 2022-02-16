@@ -1,11 +1,16 @@
 import './App.css';
-import logo from './images/STARWARS_LOGO.jpeg'
+import logo from './images/logo_img.png'
 import { Router } from '@reach/router'
 import React, {useState} from 'react'
 import NavBar from './components/NavBar';
-import CharacterDisplay from './view/CharacterDisplay';
+import Characters from './components/Characters';
+import Movies from './components/Movies';
+import Planets from './components/Planets';
 function App() {
 
+  const [people, setPeople] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [planets, setPlanets] = useState([]);
   
 
   return (
@@ -14,7 +19,9 @@ function App() {
       <div className="main-page-cont">
       <NavBar/>
       <Router>
-        <CharacterDisplay path="/characters/:id"/>
+        <Characters path="/characters/:id" people={people} setPeople={setPeople} />
+        <Movies path="/movies/:id" movies={movies} setMovies={setMovies}/>
+        <Planets path="/planets/:id" planets={planets} setPlanets={setPlanets}/>
       </Router>
       </div>
     </div>

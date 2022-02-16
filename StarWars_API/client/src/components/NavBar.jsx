@@ -10,23 +10,23 @@ const NavBar = (props) => {
     return (
         <div>
             <ul className="nav nav-tabs">
+                <li className="nav-item">
+                    <Link to="/movies/1" className="link, nav-link">Movies</Link>
+                </li>
                 <li className="nav-item ">
-                    <Link to="/characters/1/" className="link, nav-link">Characters</Link>
+                    <Link to="/characters/1" className="link, nav-link">Characters</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link">Movies</a>
+                <Link to="/planets/1" className="link, nav-link">Planets</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link">Planets</a>
+                <Link to="/species/1" className="link, nav-link">Species</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link">Species</a>
+                <Link to="/spaceships/1" className="link, nav-link">Spaceships</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link">Starships</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link">Vehicles</a>
+                <Link to="/vehicles/1" className="link, nav-link">Vehicles</Link>
                 </li>
             </ul>
 

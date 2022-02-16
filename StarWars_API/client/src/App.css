@@ -1,23 +1,33 @@
 .App {
   text-align: center;
-  padding: 50px 100px;
-  background-image:url('./images/death_star_img.jpg');
+  padding: 30px 100px;
+  background-image:url('./images/tat_img.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 1000px;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  height: 100%;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+}
+
+.nav.nav-tab {
+  margin-bottom: 50px;
 }
 
 h1 {
   color: #fed40f;
 }
 
+h2 {
+  color: black;
+  font-weight: 600;
+}
+
 .logo {
   margin-bottom: 30px;
+  background-blend-mode: overlay;
 }
 
 p {
@@ -25,12 +35,48 @@ p {
 }
 
 .content-container {
-  border: solid black 3px;
+  border: solid #111 3px;
   background-color: #333;
   width: 150px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
     
 }
 
 .link {
   text-decoration: none;
 }
+
+.display-one-container {
+  background-color:transparent #666;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  padding-right: 130px;
+
+  
+}
+
+.display-flex {
+  display: flex;
+  margin-top: 30px;
+}
+
+.display-one-text {
+  color: #0b6efd;
+  font-weight: 800;
+}
+
+.movie-title {
+  color: #fed40f;
+  text-decoration: underline;
+}
+
+.name-style {
+  color: #fed40f;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
