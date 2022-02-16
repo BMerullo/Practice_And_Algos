@@ -28,7 +28,6 @@ const Movies = (props) => {
     }, [id])
 
     const displayOneMovie = (id) => {
-        // e.preventDefault()
         const newId = id
         axios
             .get(`https://swapi.dev/api/films/${newId}/`)

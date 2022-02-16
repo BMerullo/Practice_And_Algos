@@ -20,7 +20,7 @@ function App() {
       <NavBar/>
       <Router>
         <Characters path="/characters/:id" people={people} setPeople={setPeople} />
-        <Movies path="/movies/:id" movies={movies} setMovies={setMovies}/>
+        <Movies path="/movies/:id" default movies={movies} setMovies={setMovies}/>
         <Planets path="/planets/:id" planets={planets} setPlanets={setPlanets}/>
       </Router>
       </div>
