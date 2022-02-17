@@ -66,6 +66,7 @@ const Characters = (props) => {
             <p className="display-one-text">Mass: {person.mass}</p>
             <p className="display-one-text">Gender: {person.gender}</p>
             <p className="display-one-text">Birth Year: {person.birth_year}</p>
+            
         </div>
 
         </div>

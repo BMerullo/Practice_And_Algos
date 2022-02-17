@@ -50,14 +50,25 @@ p {
 }
 
 .display-one-container {
-  background-color:transparent #666;
+  background-color: #444;
+  border: solid #fed40f 2px;
   width: 50%;
   height: 100%;
   margin: auto;
-  padding-right: 130px;
+  margin-left: 260px;
+  padding: 100px;
 
   
 }
+
+.movie-display-one-container {
+    
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    padding-right: 160px; 
+  }
+
 
 .display-flex {
   display: flex;
@@ -65,7 +76,7 @@ p {
 }
 
 .display-one-text {
-  color: #0b6efd;
+  color: #999;
   font-weight: 800;
 }
 
@@ -78,5 +89,9 @@ p {
   color: #fed40f;
   text-decoration: underline;
   margin-bottom: 30px;
+}
+
+.errors {
+  color: red;
 }
 

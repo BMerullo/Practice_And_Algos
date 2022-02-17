@@ -53,7 +53,7 @@ const Movies = (props) => {
                     ))
                 }
             </div>
-            <div className="display-one-container">
+            <div className="movie-display-one-container">
                 <p>Episode: {movie.episode_id}</p>
                 <h2 className="movie-title">{movie.title}</h2>
                 <p className="display-one-text"></p>

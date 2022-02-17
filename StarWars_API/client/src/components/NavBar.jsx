@@ -23,7 +23,7 @@ const NavBar = (props) => {
                 <Link to="/species/1" className="link, nav-link">Species</Link>
                 </li>
                 <li className="nav-item">
-                <Link to="/spaceships/1" className="link, nav-link">Spaceships</Link>
+                <Link to="/spaceships/4" className="link, nav-link">Spaceships</Link>
                 </li>
                 <li className="nav-item">
                 <Link to="/vehicles/1" className="link, nav-link">Vehicles</Link>
