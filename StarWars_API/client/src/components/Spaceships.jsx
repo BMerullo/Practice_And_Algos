@@ -7,8 +7,9 @@ const Spaceships = (props) => {
 
     const [spaceship, setSpaceship] = useState({});
     const {spaceships, setSpaceships, id} = props;
+    const [activeSpaceship, setActiveSpaceship] = useState(0)
 
-    useEffect((id) => {
+    useEffect(() => {
         axios
             .get("https://swapi.dev/api/starships/")
             .then((res) => {
@@ -28,17 +29,23 @@ const Spaceships = (props) => {
             
     },[id])
 
-    const displayOneSpaceship = (url) => {
-        // e.preventDefault()
-        // const newId = id
+    const displayOneSpaceship = (url, index) => {
+        
         axios
             .get(`${url}`)
             .then((res) => {
                 console.log("Display One")
                 console.log(res.data)
                 setSpaceship(res.data)
+                setActiveSpaceship(index)
             })
             .catch((err) => console.log(err))
+    }
+    const styleBox = (index) => {
+        if (index === activeSpaceship) {
+            return "content-container-active"
+        }
+        else return "content-container"
     }
 
     return(
@@ -46,8 +53,8 @@ const Spaceships = (props) => {
         <div>
             {
                 spaceships.map((ship, index) => (
-                    <div key={ship.name} className="content-container">
-                        <Link to={`/spaceships/${index + 2}`} className="link" onClick={()=>displayOneSpaceship(ship.url)}>
+                    <div key={ship.name} className={styleBox(index)}>
+                        <Link to={`/spaceships/${index + 2}`} className="link" onClick={()=>displayOneSpaceship(ship.url, index)}>
                             <p>
                                 {ship.name}
                             </p>

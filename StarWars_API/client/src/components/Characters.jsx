@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Characters = (props) => {
     const [person, setPerson] = useState({})
     const { people, setPeople, id } = props
+    const [activeCharacter, setActiveCharacter] = useState(0)
     
     useEffect((id) => {
         axios
@@ -28,17 +29,24 @@ const Characters = (props) => {
             
     },[id])
 
-    const displayOne = (id) => {
+    const displayOne = (url, index) => {
         // e.preventDefault()
         const newId = id
         axios
-            .get(`https://swapi.dev/api/people/${newId}/`)
+            .get(`${url}/`)
             .then((res) => {
                 console.log("Display One")
                 console.log(res.data)
                 setPerson(res.data)
+                setActiveCharacter(index)
             })
             .catch((err) => console.log(err))
+    }
+    const styleBox = (index) => {
+        if (index === activeCharacter) {
+            return "content-container-active"
+        }
+        else return "content-container"
     }
 
 
@@ -47,8 +55,8 @@ const Characters = (props) => {
         <div>
             {
                 people.map((people, index) => (
-                    <div key={people.name} className="content-container">
-                        <Link to={`/characters/${index + 1}`} className="link" onClick={()=>displayOne(index + 1)}>
+                    <div key={people.name} className={styleBox(index)}>
+                        <Link to={`/characters/${index + 1}`} className="link" onClick={()=>displayOne(people.url, index)}>
                             <p>
                                 {people.name}
                             </p>

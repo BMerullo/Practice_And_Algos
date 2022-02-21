@@ -6,7 +6,8 @@ const Planets = (props) => {
 
     const [planet, setPlanet] = useState({});
     const { planets, setPlanets, id } = props
-    useEffect((id) => {
+    const [activePlanet, setActivePlanet] = useState(0)
+    useEffect(() => {
         axios
             .get("https://swapi.dev/api/planets/")
             .then((res) => {
@@ -25,25 +26,32 @@ const Planets = (props) => {
             .catch((err) => console.log(err))
 
     }, [id])
-    const displayOnePlanet = (id) => {
-        const newId = id
+    const displayOnePlanet = (url, index) => {
         axios
-            .get(`https://swapi.dev/api/planets/${newId}/`)
+            .get(`${url}/`)
             .then((res) => {
                 console.log("Display One")
                 console.log(res.data)
                 setPlanet(res.data)
+                setActivePlanet(index)
             })
             .catch((err) => console.log(err))
     }
+    const styleBox = (index) => {
+        if (index === activePlanet) {
+            return "content-container-active"
+        }
+        else return "content-container"
+    }
+    
 
     return (
         <div className="display-flex">
             <div>
                 {
                     planets.map((rock, index) => (
-                        <div key={rock.name} className="content-container">
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOnePlanet(index + 1)}>
+                        <div key={rock.name} className={styleBox(index)}>
+                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOnePlanet(rock.url, index)}>
                                 <p>
                                     {rock.name}
                                 </p>

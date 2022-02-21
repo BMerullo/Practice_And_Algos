@@ -6,8 +6,8 @@ const Movies = (props) => {
 
     const [movie, setMovie] = useState({})
     const { movies, setMovies, id } = props
-
-    useEffect((id) => {
+    const [activeMovie, setActiveMovie] = useState(0)
+    useEffect(() => {
         axios
             .get("https://swapi.dev/api/films/")
             .then((res) => {
@@ -24,27 +24,36 @@ const Movies = (props) => {
                 setMovie(res.data)
             })
             .catch((err) => console.log(err))
+        
 
     }, [id])
 
-    const displayOneMovie = (id) => {
-        const newId = id
+    const displayOneMovie = (url, index) => {
         axios
-            .get(`https://swapi.dev/api/films/${newId}/`)
-            .then((res) => {
-                console.log("Display One")
-                console.log(res.data)
-                setMovie(res.data)
-            })
-            .catch((err) => console.log(err))
+        .get(`${url}/`)
+        .then((res) => {
+            console.log("Display One")
+            console.log(res.data)
+            setMovie(res.data)
+            setActiveMovie(index)
+        })
+        .catch((err) => console.log(err))
+        
+    }
+
+    const styleBox = (index) => {
+        if (index === activeMovie) {
+            return "content-container-active"
+        }
+        else return "content-container"
     }
     return (
         <div className="display-flex">
             <div>
                 {
                     movies.map((film, index) => (
-                        <div key={film.name} className="content-container">
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneMovie(index + 1)}>
+                        <div key={film.name} className={styleBox(index)}>
+                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneMovie(film.url, index)}>
                                 <p>
                                     {film.title}
                                 </p>

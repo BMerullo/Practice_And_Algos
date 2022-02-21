@@ -7,6 +7,7 @@ const Species = (props) => {
 
     const [oneSpecies, setOneSpecies] = useState({});
     const {species, setSpecies, id} = props;
+    const [activeSpecies, setActiveSpecies] = useState(0)
 
     useEffect((id) => {
         axios
@@ -28,16 +29,22 @@ const Species = (props) => {
 
     }, [id])
 
-    const displayOneSpecies = (id) => {
-        const newId = id
+    const displayOneSpecies = (url, index) => {
         axios
-            .get(`https://swapi.dev/api/species/${newId}/`)
+            .get(`${url}/`)
             .then((res) => {
                 console.log("Display One")
                 console.log(res.data)
                 setOneSpecies(res.data)
+                setActiveSpecies(index)
             })
             .catch((err) => console.log(err))
+    }
+    const styleBox = (index) => {
+        if (index === activeSpecies) {
+            return "content-container-active"
+        }
+        else return "content-container"
     }
 
     return(
@@ -45,8 +52,8 @@ const Species = (props) => {
             <div>
                 {
                     species.map((species, index) => (
-                        <div key={species.name} className="content-container">
-                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneSpecies(index + 1)}>
+                        <div key={species.name} className={styleBox(index)}>
+                            <Link to={`/characters/${index + 1}`} className="link" onClick={() => displayOneSpecies(species.url, index)}>
                                 <p>
                                     {species.name}
                                 </p>

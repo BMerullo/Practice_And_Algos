@@ -6,7 +6,8 @@ const Vehicles = (props) => {
 
     const [vehicle, setVehicle] = useState({});
     const {vehicles, setVehicles, id} = props
-    useEffect((id) => {
+    const [activeVehicle, setActiveVehicle] = useState(0)
+    useEffect(() => {
         axios
             .get("https://swapi.dev/api/vehicles/")
             .then((res) => {
@@ -25,7 +26,7 @@ const Vehicles = (props) => {
             .catch((err) => console.log(err))
 
     }, [id])
-    const displayOneVehicle = (url) => {
+    const displayOneVehicle = (url, index) => {
         const newId = id
         axios
             .get(`${url}`)
@@ -33,8 +34,15 @@ const Vehicles = (props) => {
                 console.log("Display One")
                 console.log(res.data)
                 setVehicle(res.data)
+                setActiveVehicle(index)
             })
             .catch((err) => console.log(err))
+    }
+    const styleBox = (index) => {
+        if (index === activeVehicle) {
+            return "content-container-active"
+        }
+        else return "content-container"
     }
 
     return (
@@ -42,8 +50,8 @@ const Vehicles = (props) => {
             <div>
                 {
                     vehicles.map((ride, index) => (
-                        <div key={ride.name} className="content-container">
-                            <Link to={`/characters/${index + 4}`} className="link" onClick={() => displayOneVehicle(ride.url)}>
+                        <div key={ride.name} className={styleBox(index)}>
+                            <Link to={`/characters/${index + 4}`} className="link" onClick={() => displayOneVehicle(ride.url, index)}>
                                 <p>
                                     {ride.name}
                                 </p>

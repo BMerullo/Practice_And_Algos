@@ -2,7 +2,7 @@ import './App.css';
 import logo from './images/logo_img.png'
 import { Router } from '@reach/router'
 import React, {useState} from 'react'
-import NavBar from './components/NavBar';
+import NavBarMap from './components/NavBarMap';
 import Characters from './components/Characters';
 import Movies from './components/Movies';
 import Planets from './components/Planets';
@@ -17,20 +17,21 @@ function App() {
   const [species, setSpecies] = useState([]);
   const [spaceships, setSpaceships] = useState([]);
   const [vehicles, setVehicles] = useState([]);
+  const [activeTab, setActiveTab] = useState("0");
   
 
   return (
     <div className="App">
       <img src={logo} alt="LOGO" className="logo"/>
       <div className="main-page-cont">
-      <NavBar/>
+      <NavBarMap/>
       <Router>
-        <Characters path="/characters/:id" people={people} setPeople={setPeople} />
-        <Movies path="/movies/:id" default movies={movies} setMovies={setMovies}/>
-        <Planets path="/planets/:id" planets={planets} setPlanets={setPlanets}/>
-        <Species path="/species/:id" species={species} setSpecies={setSpecies}/>
-        <Spaceships path="/spaceships/:id" spaceships={spaceships} setSpaceships={setSpaceships}/>
-        <Vehicles path="/vehicles/:id" vehicles={vehicles} setVehicles={setVehicles}/>
+        <Characters path="/characters/:id" people={people} setPeople={setPeople} activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Movies path="/movies/:id" default movies={movies} setMovies={setMovies} activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <Planets path="/planets/:id" planets={planets} setPlanets={setPlanets} activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <Species path="/species/:id" species={species} setSpecies={setSpecies} activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <Spaceships path="/spaceships/:id" spaceships={spaceships} setSpaceships={setSpaceships} activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <Vehicles path="/vehicles/:id" vehicles={vehicles} setVehicles={setVehicles} activeTab={activeTab} setActiveTab={setActiveTab}/>
       </Router>
       </div>
     </div>
